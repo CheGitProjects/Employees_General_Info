@@ -117,6 +117,7 @@ namespace Employees_General_Info
             btnUserClear.Click += new EventHandler(ClearUser);
             btnUserShow.Click += new EventHandler(ShowUser);
 
+ 
             //  Rights Controls
             btnRightsSave.Click += new EventHandler(SaveRights);
             btnRightsClear.Click += new EventHandler(ClearRights);
@@ -207,6 +208,7 @@ namespace Employees_General_Info
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@sID_Employee", SqlDbType.NVarChar).Value = sEmployeeID;
+                            cmd.Parameters.Add("@sID_Department", SqlDbType.NVarChar).Value = cmbEmpDepartment.SelectedValue;
                             cmd.Parameters.Add("@sID_Position", SqlDbType.NVarChar).Value = cmbPosition.SelectedValue;
                             cmd.Parameters.Add("@sID_Payroll", SqlDbType.NVarChar).Value = cmbPayroll.SelectedValue;
                             cmd.Parameters.Add("@sNo_Emp", SqlDbType.NVarChar).Value = sNo_Emp;
@@ -272,11 +274,12 @@ namespace Employees_General_Info
         private void ShowEmployees(object sender, EventArgs e)
         {
             string sCommand = "SELECT em.ID_Employee AS 'ID', em.No_EMP AS 'EMPLOYEE NUMBER', em.Name AS 'NAME', em.P_LastName AS 'PATERNAL SURNAME', " +
-                                "em.M_LastName AS 'MATERNAL SURNAME', jp.Position + ' - ' + dp.Department AS 'POSITION', em.Email AS 'EMAIL 1', em.Email2 AS 'EMAIL 2', em.Email3 AS 'EMAIL 3', em.Phone AS 'PHONE', " +
+                                "em.M_LastName AS 'MATERNAL SURNAME', dp.Department AS 'DEPARTMENT', jp.Position AS 'POSITION', em.Email AS 'EMAIL 1', em.Email2 AS 'EMAIL 2', em.Email3 AS 'EMAIL 3', em.Phone AS 'PHONE', " +
                                 "em.Cellphone AS 'CELL PHONE', em.AD AS 'ACTIVE DIRECTORY', em.Pic AS 'PIC', em.PayRoll_Rate AS 'PAYROLL RATE', em.Status AS 'ACTIVE' " +
                                 "FROM Employees em " +
                                 "LEFT JOIN Job_Positions jp ON jp.ID_Position = em.ID_Position " +
-                                "LEFT JOIN Department dp ON dp.ID_Department = jp.ID_Department";
+                                "LEFT JOIN Department dp ON dp.ID_Department = em.ID_Department " +
+                                "ORDER BY em.No_EMP";
             DataTable dt = SQL.Read(sCommand);
             if (dt.Rows.Count > 0)
             {
@@ -303,6 +306,7 @@ namespace Employees_General_Info
             teAD.Text = sAD;
             tePayroll_Rate.Text = nPayroll_Rate.ToString();
             cmbPayroll.Text = sPayroll;
+            cmbEmpDepartment.Text = sDepartment;
             cmbPosition.Text = sPosition;
             chkStatus.Checked = bStatus;
             if (!string.IsNullOrEmpty(Path.GetExtension(sPic)))
@@ -341,6 +345,7 @@ namespace Employees_General_Info
             teAD.Text = string.Empty;
             tePayroll_Rate.Text = string.Empty;
             cmbPayroll.SelectedIndex = -1;
+            cmbEmpDepartment.SelectedIndex = -1;
             cmbPosition.SelectedIndex = -1;
             try
             {
@@ -348,15 +353,18 @@ namespace Employees_General_Info
             }
             catch { }
             picEmployee.Image = Resources.User;
-            
+            chkStatus.Checked = true;
+            teEmpNumber.Focus();
         }
 
         private void FillEmpPositions()
         {
-            string sCommand = "SELECT jp.ID_Position AS 'ID', jp.Position + ' - ' +  dp.Department AS 'POSITION' " +
-                                "FROM Job_Positions jp " +
-                                "LEFT JOIN Department dp ON dp.ID_Department = jp.ID_Department " +
-                                "ORDER BY dp.Department, jp.Position";
+            //string sCommand = "SELECT jp.ID_Position AS 'ID', jp.Position + ' - ' +  dp.Department AS 'POSITION' " +
+            //                    "FROM Job_Positions jp " +
+            //                    "LEFT JOIN Department dp ON dp.ID_Department = jp.ID_Department " +
+            //                    "ORDER BY dp.Department, jp.Position";
+
+            string sCommand = $"SELECT ID_Position AS 'ID', Position AS 'POSITION' FROM Job_Positions WHERE ID_Department = '{cmbEmpDepartment.SelectedValue}' ORDER BY Position";
             DataTable dt = SQL.Read(sCommand);
             if (dt.Rows.Count > 0)
             {
@@ -380,10 +388,28 @@ namespace Employees_General_Info
             }
         }
 
+        private void FillDepEmployees()
+        {
+            string sCommand = "SELECT ID_Department AS 'ID', Department AS 'DEPARTMENT' FROM Department ORDER BY Department";
+            DataTable dt = SQL.Read(sCommand);
+            if (dt.Rows.Count > 0)
+            {
+                cmbEmpDepartment.ValueMember = "ID";
+                cmbEmpDepartment.DisplayMember = "DEPARTMENT";
+                cmbEmpDepartment.DataSource = dt;
+                cmbEmpDepartment.SelectedIndex = -1;
+            }
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
+        {            
+            FillEmpPayroll();
+            FillDepEmployees();
+        }
+
+        private void cmbEmpDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
             FillEmpPositions();
-            FillEmpPayroll();
         }
         #endregion
 
@@ -1148,7 +1174,7 @@ namespace Employees_General_Info
 
         private void FillUserEmployeeCombo()
         {
-            string sCommand = "SELECT ID_Employee AS 'ID', Name + ' ' + P_LastName + ' ' + M_LastName AS 'NAME' FROM Employees ORDER BY No_EMP";
+            string sCommand = "SELECT ID_Employee AS 'ID', Name + ' ' + P_LastName + ' ' + M_LastName AS 'NAME' FROM Employees ORDER BY Name";
             DataTable dt = SQL.Read(sCommand);
             if (dt.Rows.Count > 0)
             {
@@ -1332,7 +1358,7 @@ namespace Employees_General_Info
             switch (xTabInfo.SelectedTabPageIndex)
             {
                 case 0:
-                    Size = new Size(584, 534);
+                    Size = new Size(584, 561);
                     break;
 
                 case 1:
@@ -1375,5 +1401,7 @@ namespace Employees_General_Info
         {
             MainViewModel.GetInstance().login.Close();
         }
+
+        
     }
 }

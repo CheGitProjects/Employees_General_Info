@@ -169,6 +169,8 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.cmbEmpDepartment = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.xTabInfo)).BeginInit();
             this.xTabInfo.SuspendLayout();
             this.xTabEmployees.SuspendLayout();
@@ -268,7 +270,7 @@
             this.xTabInfo.Location = new System.Drawing.Point(0, 0);
             this.xTabInfo.Name = "xTabInfo";
             this.xTabInfo.SelectedTabPage = this.xTabEmployees;
-            this.xTabInfo.Size = new System.Drawing.Size(570, 498);
+            this.xTabInfo.Size = new System.Drawing.Size(570, 525);
             this.xTabInfo.TabIndex = 0;
             this.xTabInfo.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xTabEmployees,
@@ -295,7 +297,7 @@
             this.xTabEmployees.Controls.Add(this.gbPersonalInfo);
             this.xTabEmployees.Controls.Add(this.groupBox1);
             this.xTabEmployees.Name = "xTabEmployees";
-            this.xTabEmployees.Size = new System.Drawing.Size(564, 470);
+            this.xTabEmployees.Size = new System.Drawing.Size(564, 497);
             this.xTabEmployees.Text = "Employees";
             // 
             // picLogo
@@ -315,15 +317,15 @@
             this.gbControls.Controls.Add(this.btnEmpClear);
             this.gbControls.Location = new System.Drawing.Point(350, 329);
             this.gbControls.Name = "gbControls";
-            this.gbControls.Size = new System.Drawing.Size(193, 136);
-            this.gbControls.TabIndex = 5;
+            this.gbControls.Size = new System.Drawing.Size(193, 159);
+            this.gbControls.TabIndex = 4;
             this.gbControls.TabStop = false;
             this.gbControls.Text = "Controls";
             // 
             // btnEmpShow
             // 
             this.btnEmpShow.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpShow.ImageOptions.Image")));
-            this.btnEmpShow.Location = new System.Drawing.Point(132, 52);
+            this.btnEmpShow.Location = new System.Drawing.Point(132, 61);
             this.btnEmpShow.Name = "btnEmpShow";
             this.btnEmpShow.Size = new System.Drawing.Size(40, 40);
             this.btnEmpShow.TabIndex = 2;
@@ -333,7 +335,7 @@
             // btnEmpSave
             // 
             this.btnEmpSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpSave.ImageOptions.Image")));
-            this.btnEmpSave.Location = new System.Drawing.Point(20, 52);
+            this.btnEmpSave.Location = new System.Drawing.Point(20, 61);
             this.btnEmpSave.Name = "btnEmpSave";
             this.btnEmpSave.Size = new System.Drawing.Size(40, 40);
             this.btnEmpSave.TabIndex = 0;
@@ -343,7 +345,7 @@
             // btnEmpClear
             // 
             this.btnEmpClear.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpClear.ImageOptions.Image")));
-            this.btnEmpClear.Location = new System.Drawing.Point(76, 52);
+            this.btnEmpClear.Location = new System.Drawing.Point(76, 61);
             this.btnEmpClear.Name = "btnEmpClear";
             this.btnEmpClear.Size = new System.Drawing.Size(40, 40);
             this.btnEmpClear.TabIndex = 1;
@@ -356,7 +358,7 @@
             this.gbPic.Location = new System.Drawing.Point(350, 15);
             this.gbPic.Name = "gbPic";
             this.gbPic.Size = new System.Drawing.Size(193, 193);
-            this.gbPic.TabIndex = 4;
+            this.gbPic.TabIndex = 5;
             this.gbPic.TabStop = false;
             this.gbPic.Text = "Picture";
             // 
@@ -383,9 +385,11 @@
             // 
             // gbJobInfo
             // 
+            this.gbJobInfo.Controls.Add(this.cmbEmpDepartment);
             this.gbJobInfo.Controls.Add(this.cmbPosition);
             this.gbJobInfo.Controls.Add(this.cmbPayroll);
             this.gbJobInfo.Controls.Add(this.tePayroll_Rate);
+            this.gbJobInfo.Controls.Add(this.labelControl1);
             this.gbJobInfo.Controls.Add(this.teAD);
             this.gbJobInfo.Controls.Add(this.lblEmpPosition);
             this.gbJobInfo.Controls.Add(this.lblPayrollRate);
@@ -393,7 +397,7 @@
             this.gbJobInfo.Controls.Add(this.lblActDir);
             this.gbJobInfo.Location = new System.Drawing.Point(18, 329);
             this.gbJobInfo.Name = "gbJobInfo";
-            this.gbJobInfo.Size = new System.Drawing.Size(309, 136);
+            this.gbJobInfo.Size = new System.Drawing.Size(309, 159);
             this.gbJobInfo.TabIndex = 2;
             this.gbJobInfo.TabStop = false;
             this.gbJobInfo.Text = "Job Information";
@@ -404,10 +408,10 @@
             this.cmbPosition.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPosition.FormattingEnabled = true;
-            this.cmbPosition.Location = new System.Drawing.Point(122, 102);
+            this.cmbPosition.Location = new System.Drawing.Point(122, 73);
             this.cmbPosition.Name = "cmbPosition";
             this.cmbPosition.Size = new System.Drawing.Size(163, 21);
-            this.cmbPosition.TabIndex = 3;
+            this.cmbPosition.TabIndex = 2;
             // 
             // cmbPayroll
             // 
@@ -415,21 +419,21 @@
             this.cmbPayroll.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbPayroll.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPayroll.FormattingEnabled = true;
-            this.cmbPayroll.Location = new System.Drawing.Point(122, 47);
+            this.cmbPayroll.Location = new System.Drawing.Point(122, 100);
             this.cmbPayroll.Name = "cmbPayroll";
             this.cmbPayroll.Size = new System.Drawing.Size(163, 21);
-            this.cmbPayroll.TabIndex = 1;
+            this.cmbPayroll.TabIndex = 3;
             // 
             // tePayroll_Rate
             // 
-            this.tePayroll_Rate.Location = new System.Drawing.Point(122, 74);
+            this.tePayroll_Rate.Location = new System.Drawing.Point(122, 127);
             this.tePayroll_Rate.Name = "tePayroll_Rate";
             this.tePayroll_Rate.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.tePayroll_Rate.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tePayroll_Rate.Properties.Appearance.Options.UseBackColor = true;
             this.tePayroll_Rate.Properties.Appearance.Options.UseFont = true;
             this.tePayroll_Rate.Size = new System.Drawing.Size(163, 22);
-            this.tePayroll_Rate.TabIndex = 2;
+            this.tePayroll_Rate.TabIndex = 4;
             // 
             // teAD
             // 
@@ -444,7 +448,7 @@
             // 
             // lblEmpPosition
             // 
-            this.lblEmpPosition.Location = new System.Drawing.Point(16, 105);
+            this.lblEmpPosition.Location = new System.Drawing.Point(16, 76);
             this.lblEmpPosition.Name = "lblEmpPosition";
             this.lblEmpPosition.Size = new System.Drawing.Size(41, 13);
             this.lblEmpPosition.TabIndex = 1;
@@ -452,7 +456,7 @@
             // 
             // lblPayrollRate
             // 
-            this.lblPayrollRate.Location = new System.Drawing.Point(16, 78);
+            this.lblPayrollRate.Location = new System.Drawing.Point(16, 131);
             this.lblPayrollRate.Name = "lblPayrollRate";
             this.lblPayrollRate.Size = new System.Drawing.Size(62, 13);
             this.lblPayrollRate.TabIndex = 1;
@@ -460,7 +464,7 @@
             // 
             // lblPayroll
             // 
-            this.lblPayroll.Location = new System.Drawing.Point(16, 50);
+            this.lblPayroll.Location = new System.Drawing.Point(16, 103);
             this.lblPayroll.Name = "lblPayroll";
             this.lblPayroll.Size = new System.Drawing.Size(36, 13);
             this.lblPayroll.TabIndex = 1;
@@ -1693,14 +1697,34 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(574, 502);
+            this.panel1.Size = new System.Drawing.Size(574, 529);
             this.panel1.TabIndex = 1;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(16, 49);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(61, 13);
+            this.labelControl1.TabIndex = 1;
+            this.labelControl1.Text = "Department:";
+            // 
+            // cmbEmpDepartment
+            // 
+            this.cmbEmpDepartment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbEmpDepartment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbEmpDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEmpDepartment.FormattingEnabled = true;
+            this.cmbEmpDepartment.Location = new System.Drawing.Point(122, 46);
+            this.cmbEmpDepartment.Name = "cmbEmpDepartment";
+            this.cmbEmpDepartment.Size = new System.Drawing.Size(163, 21);
+            this.cmbEmpDepartment.TabIndex = 1;
+            this.cmbEmpDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbEmpDepartment_SelectedIndexChanged);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(574, 502);
+            this.ClientSize = new System.Drawing.Size(574, 529);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
@@ -1948,5 +1972,7 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.ComboBox cmbRightsUser;
+        private System.Windows.Forms.ComboBox cmbEmpDepartment;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

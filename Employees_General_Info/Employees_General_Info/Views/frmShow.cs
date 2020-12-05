@@ -53,6 +53,7 @@ namespace Employees_General_Info.Views
             MainViewModel.GetInstance().main.sName = view.GetRowCellValue(view.FocusedRowHandle, "NAME").ToString();
             MainViewModel.GetInstance().main.sP_LastName = view.GetRowCellValue(view.FocusedRowHandle, "PATERNAL SURNAME").ToString();
             MainViewModel.GetInstance().main.sM_LastName = view.GetRowCellValue(view.FocusedRowHandle, "MATERNAL SURNAME").ToString();
+            MainViewModel.GetInstance().main.sDepartment = view.GetRowCellValue(view.FocusedRowHandle, "DEPARTMENT").ToString();
             MainViewModel.GetInstance().main.sPosition = view.GetRowCellValue(view.FocusedRowHandle, "POSITION").ToString();
             MainViewModel.GetInstance().main.sEmail = view.GetRowCellValue(view.FocusedRowHandle, "EMAIL 1").ToString();
             MainViewModel.GetInstance().main.sEmail2 = view.GetRowCellValue(view.FocusedRowHandle, "EMAIL 2").ToString();
