@@ -70,7 +70,7 @@ namespace Employees_General_Info.Views
 
                 using (SqlConnection sqlConn = new SqlConnection(Constants.cn))
                 {
-                    string sCommand = "SELECT us.ID_User AS 'ID', em.Name + ' ' + em.P_LastName + ' ' + em.M_LastName AS 'EMPLOYEE', us.Username AS 'USERNAME', " +
+                    string sCommand = "SELECT em.ID_Employee AS 'ID', em.Name + ' ' + em.P_LastName + ' ' + em.M_LastName AS 'EMPLOYEE', us.Username AS 'USERNAME', " +
                                         "us.Password AS 'PASSWORD', us.FirstTime AS 'FIRST TIME', us.Status AS 'STATUS', rl.Role AS 'ROLE' " +
                                         "FROM Users us " +
                                         "LEFT JOIN Employees em ON em.ID_Employee = us.ID_Employee " +

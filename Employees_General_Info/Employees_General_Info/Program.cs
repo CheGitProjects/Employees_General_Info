@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Employees_General_Info.Models;
 
 
 namespace Employees_General_Info
@@ -16,9 +17,20 @@ namespace Employees_General_Info
         [STAThread]
         static void Main()
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            MainViewModel viewModel = new MainViewModel();
+            bool newInstance;
+            System.Threading.Mutex myMutex = new System.Threading.Mutex(true, "Employees_General_Info", out newInstance);
+            if (newInstance)
+            {
+                Application.Run(new frmLogin());
+            }
+            else
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("The app is already running", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
