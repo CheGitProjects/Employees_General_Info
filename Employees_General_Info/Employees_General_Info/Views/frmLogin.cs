@@ -111,20 +111,28 @@ namespace Employees_General_Info.Views
                                             "LEFT JOIN Employees_General_Info.dbo.Roles rl ON rl.ID_Role = eu.ID_Right " +
                                             $"WHERE eu.ID_Employee = '{user.ID_User}'";
                         DataTable dtUsers = SQL.Read(sCommand);
-                        if (dtUsers.Rows.Count > 0)
+                        try
                         {
-                            user.Role = dtUsers.Rows[0]["ROLE"].ToString();
-                            user.FullControl = Convert.ToBoolean(dtUsers.Rows[0]["FULLCONTROL"]);
-                            user.Read = Convert.ToBoolean(dtUsers.Rows[0]["READ"]);
-                            user.Write = Convert.ToBoolean(dtUsers.Rows[0]["WRITE"]);
-                            MainViewModel.GetInstance().login = this;
-                            Hide();
-                            MainViewModel.GetInstance().main = new frmMain();
-                            MainViewModel.GetInstance().main.Show();
+                            if (dtUsers.Rows.Count > 0)
+                            {
+                                user.Role = dtUsers.Rows[0]["ROLE"].ToString();
+                                user.FullControl = Convert.ToBoolean(dtUsers.Rows[0]["FULLCONTROL"]);
+                                user.Read = Convert.ToBoolean(dtUsers.Rows[0]["READ"]);
+                                user.Write = Convert.ToBoolean(dtUsers.Rows[0]["WRITE"]);
+                                MainViewModel.GetInstance().login = this;
+                                Hide();
+                                MainViewModel.GetInstance().main = new frmMain();
+                                MainViewModel.GetInstance().main.Show();
+                            }
+                            else
+                            {
+                                XtraMessageBox.Show("User not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-                        else
+                        catch
                         {
-                            XtraMessageBox.Show("User not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            XtraMessageBox.Show("Sorry, you are not allowed to use this app", "Permission denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Close();
                         }
                     }
                     else
