@@ -145,7 +145,7 @@ namespace Employees_General_Info.Views
             MainViewModel.GetInstance().main.bFirstTime = Convert.ToBoolean(view.GetRowCellValue(view.FocusedRowHandle, "FIRST TIME"));
             MainViewModel.GetInstance().main.bStatus = Convert.ToBoolean(view.GetRowCellValue(view.FocusedRowHandle, "ACTIVE"));
             MainViewModel.GetInstance().main.sPic = view.GetRowCellValue(view.FocusedRowHandle, "PICTURE").ToString();
-            MainViewModel.GetInstance().main.sRight = view.GetRowCellValue(view.FocusedRowHandle, "RIGHT TYPE").ToString();
+            MainViewModel.GetInstance().main.sRight = view.GetRowCellValue(view.FocusedRowHandle, "ROLE").ToString();
 
             MainViewModel.GetInstance().main.ReturnUserValues();
             Close();

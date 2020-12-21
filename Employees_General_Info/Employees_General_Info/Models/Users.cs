@@ -16,7 +16,10 @@ namespace Employees_General_Info.Models
         string password;
         bool firstTime;
         bool status;
-        string right;
+        string role;
+        bool fullcontrol;
+        bool read;
+        bool write;
 
         public string ID_User
         {
@@ -54,10 +57,28 @@ namespace Employees_General_Info.Models
             set { status = value; }
         }
 
-        public string Right
+        public string Role
         {
-            get { return right; }
-            set { right = value; }
+            get { return role; }
+            set { role = value; }
+        }
+
+        public bool FullControl
+        {
+            get { return fullcontrol; }
+            set { fullcontrol = value; }
+        }
+
+        public bool Read
+        {
+            get { return read; }
+            set { read = value; }
+        }
+
+        public bool Write
+        {
+            get { return write; }
+            set { write = value; }
         }
     }
 }

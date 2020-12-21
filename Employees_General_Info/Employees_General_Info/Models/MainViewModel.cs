@@ -12,6 +12,7 @@ namespace Employees_General_Info.Models
         public frmLogin login { get; set; }
         public frmMain main { get; set; }
         public frmShow show { get; set; }
+        public frmRoles roles { get; set; }
 
         private static MainViewModel instance;
         public MainViewModel()

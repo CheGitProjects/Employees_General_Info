@@ -71,10 +71,10 @@ namespace Employees_General_Info.Views
                 using (SqlConnection sqlConn = new SqlConnection(Constants.cn))
                 {
                     string sCommand = "SELECT us.ID_User AS 'ID', em.Name + ' ' + em.P_LastName + ' ' + em.M_LastName AS 'EMPLOYEE', us.Username AS 'USERNAME', " +
-                                        "us.Password AS 'PASSWORD', us.FirstTime AS 'FIRST TIME', us.Status AS 'STATUS', rt.RightType AS 'RIGHT TYPE' " +
+                                        "us.Password AS 'PASSWORD', us.FirstTime AS 'FIRST TIME', us.Status AS 'STATUS', rl.Role AS 'ROLE' " +
                                         "FROM Users us " +
                                         "LEFT JOIN Employees em ON em.ID_Employee = us.ID_Employee " +
-                                        "LEFT JOIN Rights_Type rt ON rt.ID_Right = us.ID_Right " +
+                                        "LEFT JOIN Employees_General_Info.dbo.Roles rl ON rl.ID_Role = us.ID_Right " +
                                         "WHERE Username = @sID_User";
                     using (SqlCommand cmd = new SqlCommand(sCommand, sqlConn))
                     {
@@ -101,14 +101,22 @@ namespace Employees_General_Info.Views
                         Password = dt.Rows[0]["PASSWORD"].ToString(),
                         FirstTime = Convert.ToBoolean(dt.Rows[0]["FIRST TIME"]),
                         Status = Convert.ToBoolean(dt.Rows[0]["STATUS"]),
-                        Right = dt.Rows[0]["RIGHT TYPE"].ToString()
-                    };
+                        Role = dt.Rows[0]["ROLE"].ToString()
+                    };                    
 
-                    if (user.Right == "Administrator")
+                    if (Models.SecurePassword.Verify(sPass, user.Password))
                     {
-
-                        if (Models.SecurePassword.Verify(sPass, user.Password))
+                        string sCommand = "SELECT rl.Role AS 'ROLE', rl.FullControl AS 'FULLCONTROL', rl.[Read] AS 'READ', rl.Write AS 'WRITE' " +
+                                            "FROM Users eu " +
+                                            "LEFT JOIN Employees_General_Info.dbo.Roles rl ON rl.ID_Role = eu.ID_Right " +
+                                            $"WHERE eu.ID_Employee = '{user.ID_User}'";
+                        DataTable dtUsers = SQL.Read(sCommand);
+                        if (dtUsers.Rows.Count > 0)
                         {
+                            user.Role = dtUsers.Rows[0]["ROLE"].ToString();
+                            user.FullControl = Convert.ToBoolean(dtUsers.Rows[0]["FULLCONTROL"]);
+                            user.Read = Convert.ToBoolean(dtUsers.Rows[0]["READ"]);
+                            user.Write = Convert.ToBoolean(dtUsers.Rows[0]["WRITE"]);
                             MainViewModel.GetInstance().login = this;
                             Hide();
                             MainViewModel.GetInstance().main = new frmMain();
@@ -116,17 +124,15 @@ namespace Employees_General_Info.Views
                         }
                         else
                         {
-                            XtraMessageBox.Show("The password is incorrect, please try again.", "Login error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtPass.Focus();
-                            txtPass.SelectAll();
+                            XtraMessageBox.Show("User not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        XtraMessageBox.Show("Permission denied", "Login error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        XtraMessageBox.Show("The password is incorrect, please try again.", "Login error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtPass.Focus();
                         txtPass.SelectAll();
-                    }
+                    }                    
                 }
                 else
                 {

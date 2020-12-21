@@ -38,6 +38,9 @@ namespace Employees_General_Info
         public string sPic;
         public decimal nPayroll_Rate;
         public bool bStatus;
+        public bool bFull;
+        public bool bRead;
+        public bool bWrite;
 
         public string sPosID;
         public string sPosition;
@@ -76,6 +79,10 @@ namespace Employees_General_Info
         public frmMain()
         {
             InitializeComponent();
+            bFull = MainViewModel.GetInstance().login.user.FullControl;
+            bRead = MainViewModel.GetInstance().login.user.Read;
+            bWrite = MainViewModel.GetInstance().login.user.Write;
+
             //Main = this;
             picEmployee.AllowDrop = true;
             picEmployee.DragEnter += new DragEventHandler(EnterImage);
@@ -116,6 +123,7 @@ namespace Employees_General_Info
             btnUserSave.Click += new EventHandler(SaveUser);
             btnUserClear.Click += new EventHandler(ClearUser);
             btnUserShow.Click += new EventHandler(ShowUser);
+            btnEditRole.Click += new EventHandler(EditRole);
 
  
             //  Rights Controls
@@ -123,6 +131,55 @@ namespace Employees_General_Info
             btnRightsClear.Click += new EventHandler(ClearRights);
             btnRightsShow.Click += new EventHandler(ShowRights);
         }
+
+        private void ValidateUser()
+        {
+            if (bFull)
+            {
+                FullControl();
+            }
+            else
+            {
+                if (bWrite)
+                {
+                    Write();
+                }
+                else
+                {
+                    Read();
+                }
+            }
+        }
+
+        private void FullControl()
+        {
+            xTabPositions.PageVisible = true;
+            xTabDepartments.PageVisible = true;
+            xTabBusiness.PageVisible = true;
+            xTabLocations.PageVisible = true;
+            xTabPayroll.PageVisible = true;
+            xTabUsers.PageVisible = true;
+            btnEmpSave.Enabled = true;
+            btnPosSave.Enabled = true;
+            btnDepSave.Enabled = true;
+            btnBusSave.Enabled = true;
+            btnLocSave.Enabled = true;
+            btnPaySave.Enabled = true;
+            btnUserSave.Enabled = true;
+        }
+
+        private void Write()
+        {
+            btnEmpSave.Enabled = true;
+        }
+
+        private void Read()
+        {
+            gbPersonalInfo.Enabled = false;
+            gbContact.Enabled = false;
+            gbJobInfo.Enabled = false;
+            gbEmpStatus.Enabled = false;
+        }        
 
         #region Employee
         private void EnterImage(object sender, DragEventArgs e)
@@ -402,9 +459,10 @@ namespace Employees_General_Info
         }
 
         private void frmMain_Load(object sender, EventArgs e)
-        {            
+        {           
             FillEmpPayroll();
             FillDepEmployees();
+            ValidateUser();
         }
 
         private void cmbEmpDepartment_SelectedIndexChanged(object sender, EventArgs e)
@@ -1124,10 +1182,10 @@ namespace Employees_General_Info
         private void ShowUser(object sender, EventArgs e)
         {
             string sCommand = "SELECT us.ID_User AS 'ID', em.Name + ' ' + em.P_LastName + ' ' + em.M_LastName AS 'NAME', Username AS 'USERNAME', " +
-                                "us.FirstTime AS 'FIRST TIME', us.Status AS 'ACTIVE', em.Pic AS 'PICTURE', rt.RightType AS 'RIGHT TYPE' " +
+                                "us.FirstTime AS 'FIRST TIME', us.Status AS 'ACTIVE', em.Pic AS 'PICTURE', rl.Role AS ROLE " +
                                 "FROM Users us " +
                                 "LEFT JOIN Employees em ON em.ID_Employee = us.ID_Employee " +
-                                "LEFT JOIN Rights_Type rt ON rt.ID_Right = us.ID_Right " +
+                                "LEFT JOIN Employees_General_Info.dbo.Roles rl ON rl.ID_Role = us.ID_Right " +
                                 "ORDER BY em.Name";
             DataTable dt = SQL.Read(sCommand);
             if (dt.Rows.Count > 0)
@@ -1172,6 +1230,12 @@ namespace Employees_General_Info
             picEmployee.Image = Resources.User;
         }
 
+        private void EditRole(object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().roles = new frmRoles();
+            MainViewModel.GetInstance().roles.ShowDialog();
+        }
+
         private void FillUserEmployeeCombo()
         {
             string sCommand = "SELECT ID_Employee AS 'ID', Name + ' ' + P_LastName + ' ' + M_LastName AS 'NAME' FROM Employees ORDER BY Name";
@@ -1185,14 +1249,14 @@ namespace Employees_General_Info
             }
         }
 
-        private void FillRightsCombo()
+        public void FillRolesCombo()
         {
-            string sCommand = "SELECT ID_Right AS 'ID', RightType AS 'RIGHT TYPE' FROM Rights_Type ORDER BY RightType";
+            string sCommand = "SELECT ID_Role AS 'ID', Role AS 'ROLE' FROM Employees_General_Info.dbo.Roles ORDER BY Role";
             DataTable dt = SQL.Read(sCommand);
             if (dt.Rows.Count > 0)
             {
                 cmbRightsUser.ValueMember = "ID";
-                cmbRightsUser.DisplayMember = "RIGHT TYPE";
+                cmbRightsUser.DisplayMember = "ROLE";
                 cmbRightsUser.DataSource = dt;
                 cmbRightsUser.SelectedIndex = -1;
             }
@@ -1388,7 +1452,7 @@ namespace Employees_General_Info
                 case 6:
                     Size = new Size(584, 460);
                     FillUserEmployeeCombo();
-                    FillRightsCombo();
+                    FillRolesCombo();
                     break;
 
                 case 7:

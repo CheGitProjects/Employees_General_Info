@@ -188,3 +188,5 @@ H:\Intelogix\Repos\Employees_General_Info\Employees_General_Info\Employees_Gener
 H:\Intelogix\Repos\Employees_General_Info\Employees_General_Info\Employees_General_Info\bin\Debug\Employees_General_Info.application
 H:\Intelogix\Repos\Employees_General_Info\Employees_General_Info\Employees_General_Info\obj\Debug\Employees_General_Info.exe.manifest
 H:\Intelogix\Repos\Employees_General_Info\Employees_General_Info\Employees_General_Info\obj\Debug\Employees_General_Info.application
+H:\Intelogix\Repos\Employees_General_Info\Employees_General_Info\Employees_General_Info\obj\Debug\Employees_General_Info.TrustInfo.xml
+H:\Intelogix\Repos\Employees_General_Info\Employees_General_Info\Employees_General_Info\obj\Debug\Employees_General_Info.Views.frmRoles.resources

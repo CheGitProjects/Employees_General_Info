@@ -40,9 +40,11 @@
             this.pnlPic = new System.Windows.Forms.Panel();
             this.picEmployee = new System.Windows.Forms.PictureBox();
             this.gbJobInfo = new System.Windows.Forms.GroupBox();
+            this.cmbEmpDepartment = new System.Windows.Forms.ComboBox();
             this.cmbPosition = new System.Windows.Forms.ComboBox();
             this.cmbPayroll = new System.Windows.Forms.ComboBox();
             this.tePayroll_Rate = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.teAD = new DevExpress.XtraEditors.TextEdit();
             this.lblEmpPosition = new DevExpress.XtraEditors.LabelControl();
             this.lblPayrollRate = new DevExpress.XtraEditors.LabelControl();
@@ -68,7 +70,7 @@
             this.lblPatSurname = new DevExpress.XtraEditors.LabelControl();
             this.lblName = new DevExpress.XtraEditors.LabelControl();
             this.lblMatSurname = new DevExpress.XtraEditors.LabelControl();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbEmpStatus = new System.Windows.Forms.GroupBox();
             this.chkStatus = new DevExpress.XtraEditors.CheckEdit();
             this.xTabPositions = new DevExpress.XtraTab.XtraTabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -137,6 +139,7 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.xTabUsers = new DevExpress.XtraTab.XtraTabPage();
             this.gbRights = new System.Windows.Forms.GroupBox();
+            this.btnEditRole = new DevExpress.XtraEditors.SimpleButton();
             this.cmbRightsUser = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnUserShow = new DevExpress.XtraEditors.SimpleButton();
@@ -169,8 +172,6 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.cmbEmpDepartment = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.xTabInfo)).BeginInit();
             this.xTabInfo.SuspendLayout();
             this.xTabEmployees.SuspendLayout();
@@ -193,7 +194,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePatSurname.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teMatSurname.Properties)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.gbEmpStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkStatus.Properties)).BeginInit();
             this.xTabPositions.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -295,7 +296,7 @@
             this.xTabEmployees.Controls.Add(this.gbJobInfo);
             this.xTabEmployees.Controls.Add(this.gbContact);
             this.xTabEmployees.Controls.Add(this.gbPersonalInfo);
-            this.xTabEmployees.Controls.Add(this.groupBox1);
+            this.xTabEmployees.Controls.Add(this.gbEmpStatus);
             this.xTabEmployees.Name = "xTabEmployees";
             this.xTabEmployees.Size = new System.Drawing.Size(564, 497);
             this.xTabEmployees.Text = "Employees";
@@ -334,6 +335,7 @@
             // 
             // btnEmpSave
             // 
+            this.btnEmpSave.Enabled = false;
             this.btnEmpSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpSave.ImageOptions.Image")));
             this.btnEmpSave.Location = new System.Drawing.Point(20, 61);
             this.btnEmpSave.Name = "btnEmpSave";
@@ -402,6 +404,18 @@
             this.gbJobInfo.TabStop = false;
             this.gbJobInfo.Text = "Job Information";
             // 
+            // cmbEmpDepartment
+            // 
+            this.cmbEmpDepartment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbEmpDepartment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbEmpDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEmpDepartment.FormattingEnabled = true;
+            this.cmbEmpDepartment.Location = new System.Drawing.Point(122, 46);
+            this.cmbEmpDepartment.Name = "cmbEmpDepartment";
+            this.cmbEmpDepartment.Size = new System.Drawing.Size(163, 21);
+            this.cmbEmpDepartment.TabIndex = 1;
+            this.cmbEmpDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbEmpDepartment_SelectedIndexChanged);
+            // 
             // cmbPosition
             // 
             this.cmbPosition.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -434,6 +448,14 @@
             this.tePayroll_Rate.Properties.Appearance.Options.UseFont = true;
             this.tePayroll_Rate.Size = new System.Drawing.Size(163, 22);
             this.tePayroll_Rate.TabIndex = 4;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(16, 49);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(61, 13);
+            this.labelControl1.TabIndex = 1;
+            this.labelControl1.Text = "Department:";
             // 
             // teAD
             // 
@@ -686,15 +708,15 @@
             this.lblMatSurname.TabIndex = 1;
             this.lblMatSurname.Text = "Maternal Surname:";
             // 
-            // groupBox1
+            // gbEmpStatus
             // 
-            this.groupBox1.Controls.Add(this.chkStatus);
-            this.groupBox1.Location = new System.Drawing.Point(350, 210);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(193, 45);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Status";
+            this.gbEmpStatus.Controls.Add(this.chkStatus);
+            this.gbEmpStatus.Location = new System.Drawing.Point(350, 210);
+            this.gbEmpStatus.Name = "gbEmpStatus";
+            this.gbEmpStatus.Size = new System.Drawing.Size(193, 45);
+            this.gbEmpStatus.TabIndex = 3;
+            this.gbEmpStatus.TabStop = false;
+            this.gbEmpStatus.Text = "Status";
             // 
             // chkStatus
             // 
@@ -715,7 +737,8 @@
             this.xTabPositions.Controls.Add(this.gbPosition);
             this.xTabPositions.Controls.Add(this.gbPosDepartment);
             this.xTabPositions.Name = "xTabPositions";
-            this.xTabPositions.Size = new System.Drawing.Size(564, 470);
+            this.xTabPositions.PageVisible = false;
+            this.xTabPositions.Size = new System.Drawing.Size(564, 497);
             this.xTabPositions.Text = "Positions";
             // 
             // groupBox2
@@ -742,6 +765,7 @@
             // 
             // btnPosSave
             // 
+            this.btnPosSave.Enabled = false;
             this.btnPosSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPosSave.ImageOptions.Image")));
             this.btnPosSave.Location = new System.Drawing.Point(29, 26);
             this.btnPosSave.Name = "btnPosSave";
@@ -844,7 +868,8 @@
             this.xTabDepartments.Controls.Add(this.gbDepBusiness);
             this.xTabDepartments.Controls.Add(this.panel3);
             this.xTabDepartments.Name = "xTabDepartments";
-            this.xTabDepartments.Size = new System.Drawing.Size(564, 470);
+            this.xTabDepartments.PageVisible = false;
+            this.xTabDepartments.Size = new System.Drawing.Size(564, 497);
             this.xTabDepartments.Text = "Departments";
             // 
             // gbDepControls
@@ -871,6 +896,7 @@
             // 
             // btnDepSave
             // 
+            this.btnDepSave.Enabled = false;
             this.btnDepSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDepSave.ImageOptions.Image")));
             this.btnDepSave.Location = new System.Drawing.Point(29, 26);
             this.btnDepSave.Name = "btnDepSave";
@@ -973,7 +999,8 @@
             this.xTabBusiness.Controls.Add(this.gbBusLocation);
             this.xTabBusiness.Controls.Add(this.panel4);
             this.xTabBusiness.Name = "xTabBusiness";
-            this.xTabBusiness.Size = new System.Drawing.Size(564, 470);
+            this.xTabBusiness.PageVisible = false;
+            this.xTabBusiness.Size = new System.Drawing.Size(564, 497);
             this.xTabBusiness.Text = "Business";
             // 
             // gbBusControls
@@ -1000,6 +1027,7 @@
             // 
             // btnBusSave
             // 
+            this.btnBusSave.Enabled = false;
             this.btnBusSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBusSave.ImageOptions.Image")));
             this.btnBusSave.Location = new System.Drawing.Point(29, 26);
             this.btnBusSave.Name = "btnBusSave";
@@ -1102,7 +1130,8 @@
             this.xTabLocations.Controls.Add(this.gbLocCountry);
             this.xTabLocations.Controls.Add(this.panel5);
             this.xTabLocations.Name = "xTabLocations";
-            this.xTabLocations.Size = new System.Drawing.Size(564, 470);
+            this.xTabLocations.PageVisible = false;
+            this.xTabLocations.Size = new System.Drawing.Size(564, 497);
             this.xTabLocations.Text = "Locations";
             // 
             // gbLocControls
@@ -1129,6 +1158,7 @@
             // 
             // btnLocSave
             // 
+            this.btnLocSave.Enabled = false;
             this.btnLocSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLocSave.ImageOptions.Image")));
             this.btnLocSave.Location = new System.Drawing.Point(29, 26);
             this.btnLocSave.Name = "btnLocSave";
@@ -1236,7 +1266,8 @@
             this.xTabPayroll.Controls.Add(this.gbExRate);
             this.xTabPayroll.Controls.Add(this.panel6);
             this.xTabPayroll.Name = "xTabPayroll";
-            this.xTabPayroll.Size = new System.Drawing.Size(564, 470);
+            this.xTabPayroll.PageVisible = false;
+            this.xTabPayroll.Size = new System.Drawing.Size(564, 497);
             this.xTabPayroll.Text = "Payroll";
             // 
             // groupBox4
@@ -1280,6 +1311,7 @@
             // 
             // btnPaySave
             // 
+            this.btnPaySave.Enabled = false;
             this.btnPaySave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPaySave.ImageOptions.Image")));
             this.btnPaySave.Location = new System.Drawing.Point(29, 26);
             this.btnPaySave.Name = "btnPaySave";
@@ -1362,18 +1394,30 @@
             this.xTabUsers.Controls.Add(this.groupBox8);
             this.xTabUsers.Controls.Add(this.panel7);
             this.xTabUsers.Name = "xTabUsers";
-            this.xTabUsers.Size = new System.Drawing.Size(564, 470);
+            this.xTabUsers.PageVisible = false;
+            this.xTabUsers.Size = new System.Drawing.Size(564, 497);
             this.xTabUsers.Text = "Users";
             // 
             // gbRights
             // 
+            this.gbRights.Controls.Add(this.btnEditRole);
             this.gbRights.Controls.Add(this.cmbRightsUser);
             this.gbRights.Location = new System.Drawing.Point(27, 275);
             this.gbRights.Name = "gbRights";
             this.gbRights.Size = new System.Drawing.Size(263, 100);
             this.gbRights.TabIndex = 5;
             this.gbRights.TabStop = false;
-            this.gbRights.Text = "Right Type";
+            this.gbRights.Text = "Role for this app";
+            // 
+            // btnEditRole
+            // 
+            this.btnEditRole.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEditRole.ImageOptions.Image")));
+            this.btnEditRole.Location = new System.Drawing.Point(194, 32);
+            this.btnEditRole.Name = "btnEditRole";
+            this.btnEditRole.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.btnEditRole.Size = new System.Drawing.Size(40, 40);
+            this.btnEditRole.TabIndex = 9;
+            this.btnEditRole.ToolTip = "Edit Roles";
             // 
             // cmbRightsUser
             // 
@@ -1383,7 +1427,7 @@
             this.cmbRightsUser.FormattingEnabled = true;
             this.cmbRightsUser.Location = new System.Drawing.Point(26, 42);
             this.cmbRightsUser.Name = "cmbRightsUser";
-            this.cmbRightsUser.Size = new System.Drawing.Size(208, 21);
+            this.cmbRightsUser.Size = new System.Drawing.Size(148, 21);
             this.cmbRightsUser.TabIndex = 0;
             // 
             // groupBox6
@@ -1410,6 +1454,7 @@
             // 
             // btnUserSave
             // 
+            this.btnUserSave.Enabled = false;
             this.btnUserSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUserSave.ImageOptions.Image")));
             this.btnUserSave.Location = new System.Drawing.Point(29, 26);
             this.btnUserSave.Name = "btnUserSave";
@@ -1555,7 +1600,8 @@
             this.xTabRights.Controls.Add(this.gbRightType);
             this.xTabRights.Controls.Add(this.panel8);
             this.xTabRights.Name = "xTabRights";
-            this.xTabRights.Size = new System.Drawing.Size(564, 470);
+            this.xTabRights.PageVisible = false;
+            this.xTabRights.Size = new System.Drawing.Size(564, 497);
             this.xTabRights.Text = "Rights";
             // 
             // groupBox10
@@ -1700,26 +1746,6 @@
             this.panel1.Size = new System.Drawing.Size(574, 529);
             this.panel1.TabIndex = 1;
             // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(16, 49);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(61, 13);
-            this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "Department:";
-            // 
-            // cmbEmpDepartment
-            // 
-            this.cmbEmpDepartment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbEmpDepartment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbEmpDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEmpDepartment.FormattingEnabled = true;
-            this.cmbEmpDepartment.Location = new System.Drawing.Point(122, 46);
-            this.cmbEmpDepartment.Name = "cmbEmpDepartment";
-            this.cmbEmpDepartment.Size = new System.Drawing.Size(163, 21);
-            this.cmbEmpDepartment.TabIndex = 1;
-            this.cmbEmpDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbEmpDepartment_SelectedIndexChanged);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1757,7 +1783,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePatSurname.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teMatSurname.Properties)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.gbEmpStatus.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chkStatus.Properties)).EndInit();
             this.xTabPositions.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -1857,7 +1883,7 @@
         private DevExpress.XtraEditors.TextEdit teAD;
         private DevExpress.XtraEditors.TextEdit teCellPhone;
         private System.Windows.Forms.Panel pnlPic;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbEmpStatus;
         private DevExpress.XtraEditors.SimpleButton btnEmpClear;
         private DevExpress.XtraEditors.SimpleButton btnEmpSave;
         private System.Windows.Forms.GroupBox gbPic;
@@ -1974,5 +2000,6 @@
         private System.Windows.Forms.ComboBox cmbRightsUser;
         private System.Windows.Forms.ComboBox cmbEmpDepartment;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.SimpleButton btnEditRole;
     }
 }
