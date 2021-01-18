@@ -38,6 +38,17 @@ namespace Employees_General_Info
         public string sPic;
         public decimal nPayroll_Rate;
         public bool bStatus;
+        public DateTime? dAdmisisonDate;
+        public DateTime? dBirthDate;
+        public string sBirthPlace;
+        public string sNSS;
+        public string sRFC;
+        public string sCURP;
+        public string sInfonavit;
+        public string sBBVA;
+        public string sMother;
+        public string sFather;
+
         public bool bFull;
         public bool bRead;
         public bool bWrite;
@@ -258,6 +269,21 @@ namespace Employees_General_Info
                     sName = teName.Text.Trim();
                     sP_LastName = tePatSurname.Text.Trim();
                     sM_LastName = teMatSurname.Text.Trim();
+
+                    string sAdmission = "";
+                    try
+                    {
+                        sAdmission = dtpAdmissionDate.EditValue.ToString();
+                    }
+                    catch { }
+
+                    string sBirthdate = "";
+                    try
+                    {
+                        sBirthdate = dtpBirthdate.EditValue.ToString();
+                    }
+                    catch { }
+
                     SavePic();
                     using (SqlConnection sqlConn = new SqlConnection(Constants.cn))
                     {
@@ -281,6 +307,16 @@ namespace Employees_General_Info
                             cmd.Parameters.Add("@sPic", SqlDbType.NVarChar).Value = sPic;
                             cmd.Parameters.Add("@nPayroll", SqlDbType.Decimal).Value = nPayroll;
                             cmd.Parameters.Add("@bStatus", SqlDbType.Bit).Value = chkStatus.Checked;
+                            cmd.Parameters.Add("@dAdmission", SqlDbType.Date).Value = !string.IsNullOrEmpty(sAdmission) ? dtpAdmissionDate.EditValue : (object)DBNull.Value;
+                            cmd.Parameters.Add("@dBirthdate", SqlDbType.Date).Value = !string.IsNullOrEmpty(sBirthdate) ? dtpBirthdate.EditValue : (object)DBNull.Value;
+                            cmd.Parameters.Add("@sBirthplace", SqlDbType.NVarChar).Value = teBirthplace.Text;
+                            cmd.Parameters.Add("@sNSS", SqlDbType.NVarChar).Value = teNSS.Text;
+                            cmd.Parameters.Add("@sRFC", SqlDbType.NVarChar).Value = teRFC.Text;
+                            cmd.Parameters.Add("@sCURP", SqlDbType.NVarChar).Value = teCURP.Text;
+                            cmd.Parameters.Add("@sInfonavit", SqlDbType.NVarChar).Value = teInfonavit.Text;
+                            cmd.Parameters.Add("@sBBVA", SqlDbType.NVarChar).Value = teBBVA.Text;
+                            cmd.Parameters.Add("@sMother", SqlDbType.NVarChar).Value = teMotherName.Text;
+                            cmd.Parameters.Add("@sFather", SqlDbType.NVarChar).Value = teFatherName.Text;
 
                             try
                             {
@@ -299,6 +335,10 @@ namespace Employees_General_Info
                         }
                     }
                 }
+            }
+            else
+            {
+                XtraMessageBox.Show("Some Data is missing, please verify.", "Missing data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -330,13 +370,16 @@ namespace Employees_General_Info
 
         private void ShowEmployees(object sender, EventArgs e)
         {
-            string sCommand = "SELECT em.ID_Employee AS 'ID', em.No_EMP AS 'EMPLOYEE NUMBER', em.Name AS 'NAME', em.P_LastName AS 'PATERNAL SURNAME', " +
-                                "em.M_LastName AS 'MATERNAL SURNAME', dp.Department AS 'DEPARTMENT', jp.Position AS 'POSITION', em.Email AS 'EMAIL 1', em.Email2 AS 'EMAIL 2', em.Email3 AS 'EMAIL 3', em.Phone AS 'PHONE', " +
-                                "em.Cellphone AS 'CELL PHONE', em.AD AS 'ACTIVE DIRECTORY', em.Pic AS 'PIC', em.PayRoll_Rate AS 'PAYROLL RATE', em.Status AS 'ACTIVE' " +
-                                "FROM Employees em " +
-                                "LEFT JOIN Job_Positions jp ON jp.ID_Position = em.ID_Position " +
-                                "LEFT JOIN Department dp ON dp.ID_Department = em.ID_Department " +
-                                "ORDER BY em.No_EMP";
+            string sCommand = "SELECT em.ID_Employee AS 'ID', em.Admission_Date AS 'ADMISSION DATE', em.No_EMP AS 'EMPLOYEE NUMBER', em.Name AS 'NAME', " +
+                            "em.P_LastName AS 'PATERNAL SURNAME', em.M_LastName AS 'MATERNAL SURNAME', em.Birthdate AS 'BIRTHDATE', em.Birthplace AS 'BIRTHPLACE', " +
+                            "em.NSS AS 'NSS', em.RFC AS 'RFC', em.CURP AS 'CURP', em.Infonavit AS 'INFONAVIT', em.Cta_BBVA AS 'BBVA', em.Mother_Name AS 'MOTHER NAME', " +
+                            "em.Father_Name AS 'FATHER NAME', dp.Department AS 'DEPARTMENT', jp.Position AS 'POSITION', em.Email AS 'EMAIL 1', em.Email2 AS 'EMAIL 2', " +
+                            "em.Email3 AS 'EMAIL 3', em.Phone AS 'PHONE', em.Cellphone AS 'CELL PHONE', em.AD AS 'ACTIVE DIRECTORY', em.Pic AS 'PIC', " +
+                            "em.PayRoll_Rate AS 'PAYROLL RATE', em.Status AS 'ACTIVE'" +
+                            "FROM Employees em " +
+                            "LEFT JOIN Job_Positions jp ON jp.ID_Position = em.ID_Position " +
+                            "LEFT JOIN Department dp ON dp.ID_Department = em.ID_Department " +
+                            "ORDER BY em.No_EMP";
             DataTable dt = SQL.Read(sCommand);
             if (dt.Rows.Count > 0)
             {
@@ -366,10 +409,22 @@ namespace Employees_General_Info
             cmbEmpDepartment.Text = sDepartment;
             cmbPosition.Text = sPosition;
             chkStatus.Checked = bStatus;
+            dtpAdmissionDate.EditValue = dAdmisisonDate;
+            dtpBirthdate.EditValue = dBirthDate;
+            teBirthplace.Text = sBirthPlace;
+            teNSS.Text = sNSS;
+            teRFC.Text = sRFC;
+            teCURP.Text = sCURP;
+            teInfonavit.Text = sInfonavit;
+            teBBVA.Text = sBBVA;
+            teMotherName.Text = sMother;
+            teFatherName.Text = sFather;
+                       
             if (!string.IsNullOrEmpty(Path.GetExtension(sPic)))
             {
                 picEmployee.Image = Image.FromFile(sPic);
             }
+
         }
 
         private bool NoEmptyValidation()
@@ -411,6 +466,16 @@ namespace Employees_General_Info
             catch { }
             picEmployee.Image = Resources.User;
             chkStatus.Checked = true;
+            dtpAdmissionDate.EditValue = null;
+            dtpBirthdate.EditValue = null;
+            teBirthplace.Text = string.Empty;
+            teNSS.Text = string.Empty;
+            teRFC.Text = string.Empty;
+            teCURP.Text = string.Empty;
+            teInfonavit.Text = string.Empty;
+            teBBVA.Text = string.Empty;
+            teMotherName.Text = string.Empty;
+            teFatherName.Text = string.Empty;
             teEmpNumber.Focus();
         }
 
@@ -1422,7 +1487,8 @@ namespace Employees_General_Info
             switch (xTabInfo.SelectedTabPageIndex)
             {
                 case 0:
-                    Size = new Size(584, 561);
+                    //Size = new Size(584, 561);
+                    Size = new Size(927, 614);
                     break;
 
                 case 1:
@@ -1465,7 +1531,5 @@ namespace Employees_General_Info
         {
             MainViewModel.GetInstance().login.Close();
         }
-
-        
     }
 }

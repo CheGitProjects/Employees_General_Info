@@ -13,6 +13,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using Employees_General_Info.Properties;
 using Employees_General_Info.Models;
 using System.Diagnostics;
+using DevExpress.XtraEditors.Repository;
 
 namespace Employees_General_Info.Views
 {
@@ -79,6 +80,73 @@ namespace Employees_General_Info.Views
             {
                 MainViewModel.GetInstance().main.bStatus = false;
             }
+
+            try
+            {
+                MainViewModel.GetInstance().main.dAdmisisonDate = Convert.ToDateTime(view.GetRowCellValue(view.FocusedRowHandle, "ADMISSION DATE"));
+            }
+            catch 
+            {
+                MainViewModel.GetInstance().main.dAdmisisonDate = null;
+            }
+
+            try
+            {
+                MainViewModel.GetInstance().main.dBirthDate = Convert.ToDateTime(view.GetRowCellValue(view.FocusedRowHandle, "BIRTHDATE"));
+            }
+            catch 
+            {
+                MainViewModel.GetInstance().main.dBirthDate = null;
+            }
+
+            try
+            {
+                MainViewModel.GetInstance().main.sBirthPlace = view.GetRowCellValue(view.FocusedRowHandle, "BIRTHDATE").ToString();
+            }
+            catch { }
+
+            try
+            {
+                MainViewModel.GetInstance().main.sNSS = view.GetRowCellValue(view.FocusedRowHandle, "NSS").ToString();
+            }
+            catch { }
+
+            try
+            {
+                MainViewModel.GetInstance().main.sRFC = view.GetRowCellValue(view.FocusedRowHandle, "RFC").ToString();
+            }
+            catch { }
+
+            try
+            {
+                MainViewModel.GetInstance().main.sCURP = view.GetRowCellValue(view.FocusedRowHandle, "CURP").ToString();
+            }
+            catch { }
+
+            try
+            {
+                MainViewModel.GetInstance().main.sInfonavit = view.GetRowCellValue(view.FocusedRowHandle, "INFONAVIT").ToString();
+            }
+            catch { }
+
+            try
+            {
+                MainViewModel.GetInstance().main.sBBVA = view.GetRowCellValue(view.FocusedRowHandle, "BBVA").ToString();
+            }
+            catch { }
+
+            try
+            {
+                MainViewModel.GetInstance().main.sMother = view.GetRowCellValue(view.FocusedRowHandle, "MOTHER NAME").ToString();
+            }
+            catch { }
+
+            try
+            {
+                MainViewModel.GetInstance().main.sFather = view.GetRowCellValue(view.FocusedRowHandle, "FATHER NAME").ToString();
+            }
+            catch { }
+
             MainViewModel.GetInstance().main.ReturnEmployeeValues();            
             Close();
         }
@@ -253,6 +321,21 @@ namespace Employees_General_Info.Views
                 case "Rights":
                     ReturnRightsData(view);
                     break;
+            }
+        }
+
+        private void gvShow_CustomRowCellEdit(object sender, CustomRowCellEditEventArgs e)
+        {
+            if (e.Column.ColumnType == typeof(DateTime))
+            {
+                try
+                {
+                    RepositoryItemDateEdit date = new RepositoryItemDateEdit();
+                    date.EditMask = "D";                    
+                    date.Mask.UseMaskAsDisplayFormat = true;
+                    e.RepositoryItem = date;
+                }
+                catch { }
             }
         }
     }

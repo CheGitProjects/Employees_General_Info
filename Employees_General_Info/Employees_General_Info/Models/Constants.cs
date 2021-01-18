@@ -9,8 +9,13 @@ namespace Employees_General_Info.Models
 {
     public static class Constants
     {
+        //  PROD SERVER
         public const string cn = "Server=35.223.136.179;Initial Catalog=General;Persist Security Info=True;User ID=sqluser;" +
             "Password=Int3logix20.-";
+
+        //  STG SERVER
+        //public const string cn = @"Server=DESKTOP-T2AL6EB\SQLEXPRESS;Initial Catalog=General;Persist Security Info=True;User ID=sqluser;" +
+        //    "Password=Int3logix20.-";
 
         public const string sPath = @"\\35.223.136.179\02 AppsDB\Employees_General_Info\Employee_Pics\";
     }

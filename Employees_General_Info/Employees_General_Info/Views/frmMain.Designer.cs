@@ -172,6 +172,27 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtpAdmissionDate = new DevExpress.XtraEditors.DateEdit();
+            this.lblAdmission = new DevExpress.XtraEditors.LabelControl();
+            this.lblBirthdate = new DevExpress.XtraEditors.LabelControl();
+            this.dtpBirthdate = new DevExpress.XtraEditors.DateEdit();
+            this.lblBirthplace = new DevExpress.XtraEditors.LabelControl();
+            this.teBirthplace = new DevExpress.XtraEditors.TextEdit();
+            this.lblNSS = new DevExpress.XtraEditors.LabelControl();
+            this.teNSS = new DevExpress.XtraEditors.TextEdit();
+            this.lblCurp = new DevExpress.XtraEditors.LabelControl();
+            this.teCURP = new DevExpress.XtraEditors.TextEdit();
+            this.lblInfonavit = new DevExpress.XtraEditors.LabelControl();
+            this.teInfonavit = new DevExpress.XtraEditors.TextEdit();
+            this.lblBBVA = new DevExpress.XtraEditors.LabelControl();
+            this.teBBVA = new DevExpress.XtraEditors.TextEdit();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblMotherName = new DevExpress.XtraEditors.LabelControl();
+            this.teFatherName = new DevExpress.XtraEditors.TextEdit();
+            this.lblFatherName = new DevExpress.XtraEditors.LabelControl();
+            this.teMotherName = new DevExpress.XtraEditors.TextEdit();
+            this.lblRFC = new DevExpress.XtraEditors.LabelControl();
+            this.teRFC = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.xTabInfo)).BeginInit();
             this.xTabInfo.SuspendLayout();
             this.xTabEmployees.SuspendLayout();
@@ -261,6 +282,19 @@
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpAdmissionDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpAdmissionDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpBirthdate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpBirthdate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBirthplace.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teNSS.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teCURP.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teInfonavit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBBVA.Properties)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teFatherName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teMotherName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teRFC.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xTabInfo
@@ -271,7 +305,7 @@
             this.xTabInfo.Location = new System.Drawing.Point(0, 0);
             this.xTabInfo.Name = "xTabInfo";
             this.xTabInfo.SelectedTabPage = this.xTabEmployees;
-            this.xTabInfo.Size = new System.Drawing.Size(570, 525);
+            this.xTabInfo.Size = new System.Drawing.Size(913, 578);
             this.xTabInfo.TabIndex = 0;
             this.xTabInfo.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xTabEmployees,
@@ -290,7 +324,7 @@
             this.xTabEmployees.Appearance.Header.Options.UseBackColor = true;
             this.xTabEmployees.Appearance.PageClient.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.xTabEmployees.Appearance.PageClient.Options.UseBackColor = true;
-            this.xTabEmployees.Controls.Add(this.picLogo);
+            this.xTabEmployees.Controls.Add(this.groupBox1);
             this.xTabEmployees.Controls.Add(this.gbControls);
             this.xTabEmployees.Controls.Add(this.gbPic);
             this.xTabEmployees.Controls.Add(this.gbJobInfo);
@@ -298,15 +332,15 @@
             this.xTabEmployees.Controls.Add(this.gbPersonalInfo);
             this.xTabEmployees.Controls.Add(this.gbEmpStatus);
             this.xTabEmployees.Name = "xTabEmployees";
-            this.xTabEmployees.Size = new System.Drawing.Size(564, 497);
+            this.xTabEmployees.Size = new System.Drawing.Size(907, 550);
             this.xTabEmployees.Text = "Employees";
             // 
             // picLogo
             // 
             this.picLogo.Image = global::Employees_General_Info.Properties.Resources.logoTransp;
-            this.picLogo.Location = new System.Drawing.Point(350, 261);
+            this.picLogo.Location = new System.Drawing.Point(92, 21);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(193, 62);
+            this.picLogo.Size = new System.Drawing.Size(349, 70);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLogo.TabIndex = 13;
             this.picLogo.TabStop = false;
@@ -314,19 +348,20 @@
             // gbControls
             // 
             this.gbControls.Controls.Add(this.btnEmpShow);
+            this.gbControls.Controls.Add(this.picLogo);
             this.gbControls.Controls.Add(this.btnEmpSave);
             this.gbControls.Controls.Add(this.btnEmpClear);
-            this.gbControls.Location = new System.Drawing.Point(350, 329);
+            this.gbControls.Location = new System.Drawing.Point(350, 382);
             this.gbControls.Name = "gbControls";
-            this.gbControls.Size = new System.Drawing.Size(193, 159);
-            this.gbControls.TabIndex = 4;
+            this.gbControls.Size = new System.Drawing.Size(533, 163);
+            this.gbControls.TabIndex = 5;
             this.gbControls.TabStop = false;
             this.gbControls.Text = "Controls";
             // 
             // btnEmpShow
             // 
             this.btnEmpShow.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpShow.ImageOptions.Image")));
-            this.btnEmpShow.Location = new System.Drawing.Point(132, 61);
+            this.btnEmpShow.Location = new System.Drawing.Point(366, 104);
             this.btnEmpShow.Name = "btnEmpShow";
             this.btnEmpShow.Size = new System.Drawing.Size(40, 40);
             this.btnEmpShow.TabIndex = 2;
@@ -337,7 +372,7 @@
             // 
             this.btnEmpSave.Enabled = false;
             this.btnEmpSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpSave.ImageOptions.Image")));
-            this.btnEmpSave.Location = new System.Drawing.Point(20, 61);
+            this.btnEmpSave.Location = new System.Drawing.Point(126, 104);
             this.btnEmpSave.Name = "btnEmpSave";
             this.btnEmpSave.Size = new System.Drawing.Size(40, 40);
             this.btnEmpSave.TabIndex = 0;
@@ -347,7 +382,7 @@
             // btnEmpClear
             // 
             this.btnEmpClear.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEmpClear.ImageOptions.Image")));
-            this.btnEmpClear.Location = new System.Drawing.Point(76, 61);
+            this.btnEmpClear.Location = new System.Drawing.Point(246, 104);
             this.btnEmpClear.Name = "btnEmpClear";
             this.btnEmpClear.Size = new System.Drawing.Size(40, 40);
             this.btnEmpClear.TabIndex = 1;
@@ -357,9 +392,9 @@
             // gbPic
             // 
             this.gbPic.Controls.Add(this.pnlPic);
-            this.gbPic.Location = new System.Drawing.Point(350, 15);
+            this.gbPic.Location = new System.Drawing.Point(679, 15);
             this.gbPic.Name = "gbPic";
-            this.gbPic.Size = new System.Drawing.Size(193, 193);
+            this.gbPic.Size = new System.Drawing.Size(204, 213);
             this.gbPic.TabIndex = 5;
             this.gbPic.TabStop = false;
             this.gbPic.Text = "Picture";
@@ -371,7 +406,7 @@
             this.pnlPic.Controls.Add(this.picEmployee);
             this.pnlPic.Location = new System.Drawing.Point(18, 20);
             this.pnlPic.Name = "pnlPic";
-            this.pnlPic.Size = new System.Drawing.Size(157, 158);
+            this.pnlPic.Size = new System.Drawing.Size(169, 178);
             this.pnlPic.TabIndex = 0;
             // 
             // picEmployee
@@ -380,7 +415,7 @@
             this.picEmployee.Image = global::Employees_General_Info.Properties.Resources.User;
             this.picEmployee.Location = new System.Drawing.Point(0, 0);
             this.picEmployee.Name = "picEmployee";
-            this.picEmployee.Size = new System.Drawing.Size(153, 154);
+            this.picEmployee.Size = new System.Drawing.Size(165, 174);
             this.picEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picEmployee.TabIndex = 0;
             this.picEmployee.TabStop = false;
@@ -397,9 +432,9 @@
             this.gbJobInfo.Controls.Add(this.lblPayrollRate);
             this.gbJobInfo.Controls.Add(this.lblPayroll);
             this.gbJobInfo.Controls.Add(this.lblActDir);
-            this.gbJobInfo.Location = new System.Drawing.Point(18, 329);
+            this.gbJobInfo.Location = new System.Drawing.Point(350, 15);
             this.gbJobInfo.Name = "gbJobInfo";
-            this.gbJobInfo.Size = new System.Drawing.Size(309, 159);
+            this.gbJobInfo.Size = new System.Drawing.Size(309, 162);
             this.gbJobInfo.TabIndex = 2;
             this.gbJobInfo.TabStop = false;
             this.gbJobInfo.Text = "Job Information";
@@ -410,7 +445,7 @@
             this.cmbEmpDepartment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbEmpDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmpDepartment.FormattingEnabled = true;
-            this.cmbEmpDepartment.Location = new System.Drawing.Point(122, 46);
+            this.cmbEmpDepartment.Location = new System.Drawing.Point(126, 48);
             this.cmbEmpDepartment.Name = "cmbEmpDepartment";
             this.cmbEmpDepartment.Size = new System.Drawing.Size(163, 21);
             this.cmbEmpDepartment.TabIndex = 1;
@@ -422,7 +457,7 @@
             this.cmbPosition.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPosition.FormattingEnabled = true;
-            this.cmbPosition.Location = new System.Drawing.Point(122, 73);
+            this.cmbPosition.Location = new System.Drawing.Point(126, 75);
             this.cmbPosition.Name = "cmbPosition";
             this.cmbPosition.Size = new System.Drawing.Size(163, 21);
             this.cmbPosition.TabIndex = 2;
@@ -433,14 +468,14 @@
             this.cmbPayroll.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbPayroll.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPayroll.FormattingEnabled = true;
-            this.cmbPayroll.Location = new System.Drawing.Point(122, 100);
+            this.cmbPayroll.Location = new System.Drawing.Point(126, 102);
             this.cmbPayroll.Name = "cmbPayroll";
             this.cmbPayroll.Size = new System.Drawing.Size(163, 21);
             this.cmbPayroll.TabIndex = 3;
             // 
             // tePayroll_Rate
             // 
-            this.tePayroll_Rate.Location = new System.Drawing.Point(122, 127);
+            this.tePayroll_Rate.Location = new System.Drawing.Point(126, 129);
             this.tePayroll_Rate.Name = "tePayroll_Rate";
             this.tePayroll_Rate.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.tePayroll_Rate.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -451,7 +486,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(16, 49);
+            this.labelControl1.Location = new System.Drawing.Point(20, 51);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(61, 13);
             this.labelControl1.TabIndex = 1;
@@ -459,7 +494,7 @@
             // 
             // teAD
             // 
-            this.teAD.Location = new System.Drawing.Point(122, 18);
+            this.teAD.Location = new System.Drawing.Point(126, 20);
             this.teAD.Name = "teAD";
             this.teAD.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.teAD.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -470,7 +505,7 @@
             // 
             // lblEmpPosition
             // 
-            this.lblEmpPosition.Location = new System.Drawing.Point(16, 76);
+            this.lblEmpPosition.Location = new System.Drawing.Point(20, 78);
             this.lblEmpPosition.Name = "lblEmpPosition";
             this.lblEmpPosition.Size = new System.Drawing.Size(41, 13);
             this.lblEmpPosition.TabIndex = 1;
@@ -478,7 +513,7 @@
             // 
             // lblPayrollRate
             // 
-            this.lblPayrollRate.Location = new System.Drawing.Point(16, 131);
+            this.lblPayrollRate.Location = new System.Drawing.Point(20, 133);
             this.lblPayrollRate.Name = "lblPayrollRate";
             this.lblPayrollRate.Size = new System.Drawing.Size(62, 13);
             this.lblPayrollRate.TabIndex = 1;
@@ -486,7 +521,7 @@
             // 
             // lblPayroll
             // 
-            this.lblPayroll.Location = new System.Drawing.Point(16, 103);
+            this.lblPayroll.Location = new System.Drawing.Point(20, 105);
             this.lblPayroll.Name = "lblPayroll";
             this.lblPayroll.Size = new System.Drawing.Size(36, 13);
             this.lblPayroll.TabIndex = 1;
@@ -494,7 +529,7 @@
             // 
             // lblActDir
             // 
-            this.lblActDir.Location = new System.Drawing.Point(16, 22);
+            this.lblActDir.Location = new System.Drawing.Point(20, 24);
             this.lblActDir.Name = "lblActDir";
             this.lblActDir.Size = new System.Drawing.Size(81, 13);
             this.lblActDir.TabIndex = 1;
@@ -512,7 +547,7 @@
             this.gbContact.Controls.Add(this.lblEmail);
             this.gbContact.Controls.Add(this.lblCellPhone);
             this.gbContact.Controls.Add(this.lblPhone);
-            this.gbContact.Location = new System.Drawing.Point(18, 160);
+            this.gbContact.Location = new System.Drawing.Point(18, 382);
             this.gbContact.Name = "gbContact";
             this.gbContact.Size = new System.Drawing.Size(309, 163);
             this.gbContact.TabIndex = 1;
@@ -617,68 +652,84 @@
             // gbPersonalInfo
             // 
             this.gbPersonalInfo.BackColor = System.Drawing.Color.Transparent;
+            this.gbPersonalInfo.Controls.Add(this.dtpAdmissionDate);
+            this.gbPersonalInfo.Controls.Add(this.dtpBirthdate);
             this.gbPersonalInfo.Controls.Add(this.teEmpNumber);
             this.gbPersonalInfo.Controls.Add(this.teName);
             this.gbPersonalInfo.Controls.Add(this.tePatSurname);
             this.gbPersonalInfo.Controls.Add(this.teMatSurname);
             this.gbPersonalInfo.Controls.Add(this.lblEmpNumber);
+            this.gbPersonalInfo.Controls.Add(this.teBBVA);
+            this.gbPersonalInfo.Controls.Add(this.lblAdmission);
             this.gbPersonalInfo.Controls.Add(this.lblPatSurname);
+            this.gbPersonalInfo.Controls.Add(this.lblBBVA);
+            this.gbPersonalInfo.Controls.Add(this.teInfonavit);
             this.gbPersonalInfo.Controls.Add(this.lblName);
+            this.gbPersonalInfo.Controls.Add(this.teRFC);
+            this.gbPersonalInfo.Controls.Add(this.teCURP);
             this.gbPersonalInfo.Controls.Add(this.lblMatSurname);
+            this.gbPersonalInfo.Controls.Add(this.lblInfonavit);
+            this.gbPersonalInfo.Controls.Add(this.teNSS);
+            this.gbPersonalInfo.Controls.Add(this.lblBirthplace);
+            this.gbPersonalInfo.Controls.Add(this.lblBirthdate);
+            this.gbPersonalInfo.Controls.Add(this.lblRFC);
+            this.gbPersonalInfo.Controls.Add(this.teBirthplace);
+            this.gbPersonalInfo.Controls.Add(this.lblCurp);
+            this.gbPersonalInfo.Controls.Add(this.lblNSS);
             this.gbPersonalInfo.Location = new System.Drawing.Point(18, 15);
             this.gbPersonalInfo.Name = "gbPersonalInfo";
-            this.gbPersonalInfo.Size = new System.Drawing.Size(309, 139);
+            this.gbPersonalInfo.Size = new System.Drawing.Size(309, 361);
             this.gbPersonalInfo.TabIndex = 0;
             this.gbPersonalInfo.TabStop = false;
             this.gbPersonalInfo.Text = "Personal Information";
             // 
             // teEmpNumber
             // 
-            this.teEmpNumber.Location = new System.Drawing.Point(122, 20);
+            this.teEmpNumber.Location = new System.Drawing.Point(122, 43);
             this.teEmpNumber.Name = "teEmpNumber";
             this.teEmpNumber.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.teEmpNumber.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teEmpNumber.Properties.Appearance.Options.UseBackColor = true;
             this.teEmpNumber.Properties.Appearance.Options.UseFont = true;
             this.teEmpNumber.Size = new System.Drawing.Size(163, 22);
-            this.teEmpNumber.TabIndex = 0;
+            this.teEmpNumber.TabIndex = 1;
             // 
             // teName
             // 
-            this.teName.Location = new System.Drawing.Point(122, 48);
+            this.teName.Location = new System.Drawing.Point(122, 71);
             this.teName.Name = "teName";
             this.teName.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.teName.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teName.Properties.Appearance.Options.UseBackColor = true;
             this.teName.Properties.Appearance.Options.UseFont = true;
             this.teName.Size = new System.Drawing.Size(163, 22);
-            this.teName.TabIndex = 1;
+            this.teName.TabIndex = 2;
             // 
             // tePatSurname
             // 
-            this.tePatSurname.Location = new System.Drawing.Point(122, 76);
+            this.tePatSurname.Location = new System.Drawing.Point(122, 99);
             this.tePatSurname.Name = "tePatSurname";
             this.tePatSurname.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.tePatSurname.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tePatSurname.Properties.Appearance.Options.UseBackColor = true;
             this.tePatSurname.Properties.Appearance.Options.UseFont = true;
             this.tePatSurname.Size = new System.Drawing.Size(163, 22);
-            this.tePatSurname.TabIndex = 2;
+            this.tePatSurname.TabIndex = 3;
             // 
             // teMatSurname
             // 
-            this.teMatSurname.Location = new System.Drawing.Point(122, 104);
+            this.teMatSurname.Location = new System.Drawing.Point(122, 127);
             this.teMatSurname.Name = "teMatSurname";
             this.teMatSurname.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.teMatSurname.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teMatSurname.Properties.Appearance.Options.UseBackColor = true;
             this.teMatSurname.Properties.Appearance.Options.UseFont = true;
             this.teMatSurname.Size = new System.Drawing.Size(163, 22);
-            this.teMatSurname.TabIndex = 3;
+            this.teMatSurname.TabIndex = 4;
             // 
             // lblEmpNumber
             // 
-            this.lblEmpNumber.Location = new System.Drawing.Point(16, 24);
+            this.lblEmpNumber.Location = new System.Drawing.Point(16, 47);
             this.lblEmpNumber.Name = "lblEmpNumber";
             this.lblEmpNumber.Size = new System.Drawing.Size(90, 13);
             this.lblEmpNumber.TabIndex = 1;
@@ -686,7 +737,7 @@
             // 
             // lblPatSurname
             // 
-            this.lblPatSurname.Location = new System.Drawing.Point(16, 80);
+            this.lblPatSurname.Location = new System.Drawing.Point(16, 103);
             this.lblPatSurname.Name = "lblPatSurname";
             this.lblPatSurname.Size = new System.Drawing.Size(89, 13);
             this.lblPatSurname.TabIndex = 1;
@@ -694,7 +745,7 @@
             // 
             // lblName
             // 
-            this.lblName.Location = new System.Drawing.Point(16, 52);
+            this.lblName.Location = new System.Drawing.Point(16, 75);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(31, 13);
             this.lblName.TabIndex = 1;
@@ -702,7 +753,7 @@
             // 
             // lblMatSurname
             // 
-            this.lblMatSurname.Location = new System.Drawing.Point(16, 108);
+            this.lblMatSurname.Location = new System.Drawing.Point(16, 131);
             this.lblMatSurname.Name = "lblMatSurname";
             this.lblMatSurname.Size = new System.Drawing.Size(91, 13);
             this.lblMatSurname.TabIndex = 1;
@@ -711,9 +762,9 @@
             // gbEmpStatus
             // 
             this.gbEmpStatus.Controls.Add(this.chkStatus);
-            this.gbEmpStatus.Location = new System.Drawing.Point(350, 210);
+            this.gbEmpStatus.Location = new System.Drawing.Point(350, 183);
             this.gbEmpStatus.Name = "gbEmpStatus";
-            this.gbEmpStatus.Size = new System.Drawing.Size(193, 45);
+            this.gbEmpStatus.Size = new System.Drawing.Size(309, 45);
             this.gbEmpStatus.TabIndex = 3;
             this.gbEmpStatus.TabStop = false;
             this.gbEmpStatus.Text = "Status";
@@ -721,7 +772,7 @@
             // chkStatus
             // 
             this.chkStatus.EditValue = true;
-            this.chkStatus.Location = new System.Drawing.Point(59, 13);
+            this.chkStatus.Location = new System.Drawing.Point(117, 13);
             this.chkStatus.Name = "chkStatus";
             this.chkStatus.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkStatus.Properties.Appearance.Options.UseFont = true;
@@ -1743,14 +1794,231 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(574, 529);
+            this.panel1.Size = new System.Drawing.Size(917, 582);
             this.panel1.TabIndex = 1;
+            // 
+            // dtpAdmissionDate
+            // 
+            this.dtpAdmissionDate.EditValue = null;
+            this.dtpAdmissionDate.Location = new System.Drawing.Point(122, 17);
+            this.dtpAdmissionDate.Name = "dtpAdmissionDate";
+            this.dtpAdmissionDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpAdmissionDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpAdmissionDate.Properties.DisplayFormat.FormatString = "D";
+            this.dtpAdmissionDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtpAdmissionDate.Properties.EditFormat.FormatString = "D";
+            this.dtpAdmissionDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtpAdmissionDate.Properties.Mask.EditMask = "D";
+            this.dtpAdmissionDate.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.dtpAdmissionDate.Size = new System.Drawing.Size(163, 20);
+            this.dtpAdmissionDate.TabIndex = 0;
+            // 
+            // lblAdmission
+            // 
+            this.lblAdmission.Location = new System.Drawing.Point(16, 20);
+            this.lblAdmission.Name = "lblAdmission";
+            this.lblAdmission.Size = new System.Drawing.Size(77, 13);
+            this.lblAdmission.TabIndex = 1;
+            this.lblAdmission.Text = "Admission Date:";
+            // 
+            // lblBirthdate
+            // 
+            this.lblBirthdate.Location = new System.Drawing.Point(16, 158);
+            this.lblBirthdate.Name = "lblBirthdate";
+            this.lblBirthdate.Size = new System.Drawing.Size(48, 13);
+            this.lblBirthdate.TabIndex = 1;
+            this.lblBirthdate.Text = "Birthdate:";
+            // 
+            // dtpBirthdate
+            // 
+            this.dtpBirthdate.EditValue = null;
+            this.dtpBirthdate.Location = new System.Drawing.Point(122, 155);
+            this.dtpBirthdate.Name = "dtpBirthdate";
+            this.dtpBirthdate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpBirthdate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpBirthdate.Properties.DisplayFormat.FormatString = "D";
+            this.dtpBirthdate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtpBirthdate.Properties.EditFormat.FormatString = "D";
+            this.dtpBirthdate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtpBirthdate.Properties.Mask.EditMask = "D";
+            this.dtpBirthdate.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.dtpBirthdate.Size = new System.Drawing.Size(163, 20);
+            this.dtpBirthdate.TabIndex = 5;
+            // 
+            // lblBirthplace
+            // 
+            this.lblBirthplace.Location = new System.Drawing.Point(16, 185);
+            this.lblBirthplace.Name = "lblBirthplace";
+            this.lblBirthplace.Size = new System.Drawing.Size(54, 13);
+            this.lblBirthplace.TabIndex = 1;
+            this.lblBirthplace.Text = "Birth Place:";
+            // 
+            // teBirthplace
+            // 
+            this.teBirthplace.Location = new System.Drawing.Point(122, 181);
+            this.teBirthplace.Name = "teBirthplace";
+            this.teBirthplace.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.teBirthplace.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teBirthplace.Properties.Appearance.Options.UseBackColor = true;
+            this.teBirthplace.Properties.Appearance.Options.UseFont = true;
+            this.teBirthplace.Size = new System.Drawing.Size(163, 22);
+            this.teBirthplace.TabIndex = 6;
+            // 
+            // lblNSS
+            // 
+            this.lblNSS.Location = new System.Drawing.Point(16, 213);
+            this.lblNSS.Name = "lblNSS";
+            this.lblNSS.Size = new System.Drawing.Size(23, 13);
+            this.lblNSS.TabIndex = 1;
+            this.lblNSS.Text = "NSS:";
+            // 
+            // teNSS
+            // 
+            this.teNSS.Location = new System.Drawing.Point(122, 209);
+            this.teNSS.Name = "teNSS";
+            this.teNSS.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.teNSS.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teNSS.Properties.Appearance.Options.UseBackColor = true;
+            this.teNSS.Properties.Appearance.Options.UseFont = true;
+            this.teNSS.Size = new System.Drawing.Size(163, 22);
+            this.teNSS.TabIndex = 7;
+            // 
+            // lblCurp
+            // 
+            this.lblCurp.Location = new System.Drawing.Point(16, 268);
+            this.lblCurp.Name = "lblCurp";
+            this.lblCurp.Size = new System.Drawing.Size(31, 13);
+            this.lblCurp.TabIndex = 1;
+            this.lblCurp.Text = "CURP:";
+            // 
+            // teCURP
+            // 
+            this.teCURP.Location = new System.Drawing.Point(122, 264);
+            this.teCURP.Name = "teCURP";
+            this.teCURP.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.teCURP.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teCURP.Properties.Appearance.Options.UseBackColor = true;
+            this.teCURP.Properties.Appearance.Options.UseFont = true;
+            this.teCURP.Size = new System.Drawing.Size(163, 22);
+            this.teCURP.TabIndex = 9;
+            // 
+            // lblInfonavit
+            // 
+            this.lblInfonavit.Location = new System.Drawing.Point(16, 296);
+            this.lblInfonavit.Name = "lblInfonavit";
+            this.lblInfonavit.Size = new System.Drawing.Size(48, 13);
+            this.lblInfonavit.TabIndex = 1;
+            this.lblInfonavit.Text = "Infonavit:";
+            // 
+            // teInfonavit
+            // 
+            this.teInfonavit.Location = new System.Drawing.Point(122, 292);
+            this.teInfonavit.Name = "teInfonavit";
+            this.teInfonavit.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.teInfonavit.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teInfonavit.Properties.Appearance.Options.UseBackColor = true;
+            this.teInfonavit.Properties.Appearance.Options.UseFont = true;
+            this.teInfonavit.Size = new System.Drawing.Size(163, 22);
+            this.teInfonavit.TabIndex = 10;
+            // 
+            // lblBBVA
+            // 
+            this.lblBBVA.Location = new System.Drawing.Point(16, 324);
+            this.lblBBVA.Name = "lblBBVA";
+            this.lblBBVA.Size = new System.Drawing.Size(29, 13);
+            this.lblBBVA.TabIndex = 1;
+            this.lblBBVA.Text = "BBVA:";
+            // 
+            // teBBVA
+            // 
+            this.teBBVA.Location = new System.Drawing.Point(122, 320);
+            this.teBBVA.Name = "teBBVA";
+            this.teBBVA.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.teBBVA.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teBBVA.Properties.Appearance.Options.UseBackColor = true;
+            this.teBBVA.Properties.Appearance.Options.UseFont = true;
+            this.teBBVA.Size = new System.Drawing.Size(163, 22);
+            this.teBBVA.TabIndex = 11;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.teFatherName);
+            this.groupBox1.Controls.Add(this.lblMotherName);
+            this.groupBox1.Controls.Add(this.lblFatherName);
+            this.groupBox1.Controls.Add(this.teMotherName);
+            this.groupBox1.Location = new System.Drawing.Point(350, 244);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(533, 132);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Parents Information";
+            // 
+            // lblMotherName
+            // 
+            this.lblMotherName.Location = new System.Drawing.Point(33, 42);
+            this.lblMotherName.Name = "lblMotherName";
+            this.lblMotherName.Size = new System.Drawing.Size(75, 13);
+            this.lblMotherName.TabIndex = 1;
+            this.lblMotherName.Text = "Mother\'s Name:";
+            // 
+            // teFatherName
+            // 
+            this.teFatherName.Location = new System.Drawing.Point(139, 74);
+            this.teFatherName.Name = "teFatherName";
+            this.teFatherName.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.teFatherName.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teFatherName.Properties.Appearance.Options.UseBackColor = true;
+            this.teFatherName.Properties.Appearance.Options.UseFont = true;
+            this.teFatherName.Size = new System.Drawing.Size(360, 22);
+            this.teFatherName.TabIndex = 1;
+            // 
+            // lblFatherName
+            // 
+            this.lblFatherName.Location = new System.Drawing.Point(33, 79);
+            this.lblFatherName.Name = "lblFatherName";
+            this.lblFatherName.Size = new System.Drawing.Size(73, 13);
+            this.lblFatherName.TabIndex = 1;
+            this.lblFatherName.Text = "Father\'s Name:";
+            // 
+            // teMotherName
+            // 
+            this.teMotherName.Location = new System.Drawing.Point(139, 37);
+            this.teMotherName.Name = "teMotherName";
+            this.teMotherName.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.teMotherName.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teMotherName.Properties.Appearance.Options.UseBackColor = true;
+            this.teMotherName.Properties.Appearance.Options.UseFont = true;
+            this.teMotherName.Size = new System.Drawing.Size(360, 22);
+            this.teMotherName.TabIndex = 0;
+            // 
+            // lblRFC
+            // 
+            this.lblRFC.Location = new System.Drawing.Point(16, 241);
+            this.lblRFC.Name = "lblRFC";
+            this.lblRFC.Size = new System.Drawing.Size(24, 13);
+            this.lblRFC.TabIndex = 1;
+            this.lblRFC.Text = "RFC:";
+            // 
+            // teRFC
+            // 
+            this.teRFC.Location = new System.Drawing.Point(122, 237);
+            this.teRFC.Name = "teRFC";
+            this.teRFC.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.teRFC.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teRFC.Properties.Appearance.Options.UseBackColor = true;
+            this.teRFC.Properties.Appearance.Options.UseFont = true;
+            this.teRFC.Size = new System.Drawing.Size(163, 22);
+            this.teRFC.TabIndex = 8;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(574, 529);
+            this.ClientSize = new System.Drawing.Size(917, 582);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
@@ -1852,6 +2120,20 @@
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtpAdmissionDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpAdmissionDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpBirthdate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpBirthdate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBirthplace.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teNSS.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teCURP.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teInfonavit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBBVA.Properties)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teFatherName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teMotherName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teRFC.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2001,5 +2283,26 @@
         private System.Windows.Forms.ComboBox cmbEmpDepartment;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton btnEditRole;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private DevExpress.XtraEditors.TextEdit teFatherName;
+        private DevExpress.XtraEditors.LabelControl lblMotherName;
+        private DevExpress.XtraEditors.LabelControl lblFatherName;
+        private DevExpress.XtraEditors.TextEdit teMotherName;
+        private DevExpress.XtraEditors.DateEdit dtpAdmissionDate;
+        private DevExpress.XtraEditors.DateEdit dtpBirthdate;
+        private DevExpress.XtraEditors.TextEdit teBBVA;
+        private DevExpress.XtraEditors.LabelControl lblAdmission;
+        private DevExpress.XtraEditors.LabelControl lblBBVA;
+        private DevExpress.XtraEditors.TextEdit teInfonavit;
+        private DevExpress.XtraEditors.TextEdit teCURP;
+        private DevExpress.XtraEditors.LabelControl lblInfonavit;
+        private DevExpress.XtraEditors.TextEdit teNSS;
+        private DevExpress.XtraEditors.LabelControl lblBirthplace;
+        private DevExpress.XtraEditors.LabelControl lblBirthdate;
+        private DevExpress.XtraEditors.TextEdit teBirthplace;
+        private DevExpress.XtraEditors.LabelControl lblCurp;
+        private DevExpress.XtraEditors.LabelControl lblNSS;
+        private DevExpress.XtraEditors.TextEdit teRFC;
+        private DevExpress.XtraEditors.LabelControl lblRFC;
     }
 }

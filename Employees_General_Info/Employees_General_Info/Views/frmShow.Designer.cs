@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShow));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.gcShow = new DevExpress.XtraGrid.GridControl();
             this.gvShow = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcShow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvShow)).BeginInit();
@@ -48,6 +48,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(940, 460);
             this.panel1.TabIndex = 0;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.ImageOptions.Image")));
+            this.btnExport.Location = new System.Drawing.Point(893, 3);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(40, 40);
+            this.btnExport.TabIndex = 1;
             // 
             // gcShow
             // 
@@ -67,16 +76,8 @@
             this.gvShow.OptionsBehavior.Editable = false;
             this.gvShow.OptionsFind.AlwaysVisible = true;
             this.gvShow.OptionsView.ShowGroupPanel = false;
+            this.gvShow.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.gvShow_CustomRowCellEdit);
             this.gvShow.DoubleClick += new System.EventHandler(this.gvShow_DoubleClick);
-            // 
-            // btnExport
-            // 
-            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnExport.Location = new System.Drawing.Point(893, 3);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(40, 40);
-            this.btnExport.TabIndex = 1;
             // 
             // frmShow
             // 
